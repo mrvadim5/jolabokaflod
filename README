@@ -1,0 +1,3 @@
+#Uses guest names and email to randomize gift-giving. Similar to a Secret Santa event. Currently only tested in using entry method 2 (entering each guest and email manually on-site rather than with a text file).
+#Based on secret santa program by Monique Chen https://github.com/itsliterallymonique
+#SMTP allowances and permissions have changed as 2FA and other security measures have changed, therefore I edited the code and my own domain SMTP to create a scenario where this code works. Likely, entering your own email and password will result in errors without self-hosting

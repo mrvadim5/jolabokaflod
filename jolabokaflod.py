@@ -1,11 +1,15 @@
 Jolabokaflod Generator by mrvadim5
 
 '''
+
+Jolabokaflod Generator by mrvadim5
+
+'''
 import re
 import random
 
-sender_address = 'email'
-sender_pass = 'pw'
+sender_address = 'EMAIL'
+sender_pass = 'PW'
 
 names = []
 emails = []
@@ -136,22 +140,22 @@ You are the Jolabokafloder of {recipient[i]}!
     
     # sets up the MIME
     message = MIMEMultipart()
-    message['From'] = 'email' # your email address
+    message['From'] = 'EMAIL' # your email address
     message['To'] = receiver_address # Secret Santa's email address
-    message['Subject'] = 'Jolabokaflod' # subject of the 
+    message['Subject'] = 'Jolabokaflod' # subject 
     
     # sets the body of the mail
     message.attach(MIMEText(mail_content, 'plain'))
     
     # creates the SMTP session for sending the mail
-    session = smtplib.SMTP('smtp.gmail.com', 587)
-    session.connect("smtp.gmail.com", 587)
-    session.ehlo()
-    session.starttls()
-    session.login('email','pw')
+    mailServer = smtplib.SMTP('mail.smtp2go.com', 8025)
+    mailServer.ehlo()
+    mailServer.starttls()
+    mailServer.ehlo()
+    mailServer.login('EMAIL','PW')
     text = message.as_string()
-    session.sendmail(sender_address, receiver_address, text)
-    session.quit()
+    mailServer.sendmail(sender_address, receiver_address, text)
+    mailServer.close()
     
 allocations = open("SantaAllocations.txt", "w+")
 

@@ -152,8 +152,7 @@ You are the Jolabokafloder of {recipient[i]}!
     mailServer.login('EMAIL','PW')
     
     # Send email
-    text = message.as_string()
-    mailServer.sendmail(sender_address, receiver_address, text)
+    mailServer.sendmail(sender_address, receiver_address, message.as_string()
     
     # Close SMTP connection
     mailServer.close()

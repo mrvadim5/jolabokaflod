@@ -2,5 +2,5 @@
 # Currently only tested in using entry method 2 (entering each guest and email manually on-site rather than with a text file).
 # Based on secret santa program by Monique Chen https://github.com/itsliterallymonique
 # SMTP allowances and permissions have changed as 2FA and other security measures have changed, therefore I edited the code and my own domain SMTP to create a scenario where this code works. 
-# Likely, entering your own email and password will result in errors without self-hosting.
-# Errors are present in lines 155 and 156, but script still functions. See Issues tab for explanation.
+# Entering your own email and password will likely result in errors without self-hosting.
+# Must replace EMAIL and PW text with user's email and password.

@@ -1,5 +1,3 @@
-Jolabokaflod Generator by mrvadim5
-
 '''
 
 Jolabokaflod Generator by mrvadim5
@@ -62,7 +60,7 @@ if(option == 1):
             x = 1
         else:
             print("ERROR: Please input a file name which ends with .txt")
-    text = open(filename, "r")
+    text = open(filename, "r", encoding="utf-8")
     for i in range(0, count):
         info = text.readline().split(', ')
         names.append(info[0])
@@ -72,7 +70,7 @@ if(option == 1):
 # option 2: manually get info
 elif(option == 2):
 
-    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    regex = r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
     
     print("Ok! It's time for you to input the participants' information!")
     for i in range(1, count + 1):
@@ -119,9 +117,6 @@ while(cont == 0):
 # Sending the emails to the participants
 
 import smtplib
-
-import random
-
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -142,7 +137,7 @@ You are the Jolabokafloder of {recipient[i]}!
     message = MIMEMultipart()
     message['From'] = 'EMAIL' # your email address
     message['To'] = receiver_address # Secret Santa's email address
-    message['Subject'] = 'Jolabokaflod' # subject 
+    message['Subject'] = 'Jolabokaflod Assignment' # subject 
     
     # sets the body of the mail
     message.attach(MIMEText(mail_content, 'plain'))
@@ -152,12 +147,20 @@ You are the Jolabokafloder of {recipient[i]}!
     mailServer.ehlo()
     mailServer.starttls()
     mailServer.ehlo()
+    
+    # login to SMTP server
     mailServer.login('EMAIL','PW')
+    
+    # Send email
     text = message.as_string()
     mailServer.sendmail(sender_address, receiver_address, text)
-    mailServer.close()
     
-allocations = open("SantaAllocations.txt", "w+")
+    # Close SMTP connection
+    mailServer.close()
+    print("Email sent successfully.")
+    
+    # Create master document
+allocations = open("MasterAllocations.txt", "w+", encoding="utf-8")
 
 for i in range(0, len(names)):
     allocations.write(f'{names[i]} is the jolabokafloder of {recipient[i]}\n')

@@ -165,7 +165,5 @@ for i in range(0, len(names)):
     allocations.write(f'{names[i]} is the jolabokafloder of {recipient[i]}\n')
     
 allocations.close() 
-#    while True: 
-#        command = input("Type 'exit' to close the program: ") 
-#        if command.lower() == 'exit': 
-#            break 
+# input("Enter any key to quit.") 
+# sys.exit() 
